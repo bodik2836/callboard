@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome');
+Route::get('advert/{id}', 'HomeController@getAdverts')->where([
+    'id' => '[0-9]+'
+]);

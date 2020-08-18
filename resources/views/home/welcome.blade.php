@@ -20,7 +20,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $advert->title }}</h5>
                                     <p class="card-text">{{ $advert->description }}</p>
-                                    <a href="#" class="card-link">Card link</a>
+                                    <div class="row">
+                                        <h6 class="card-subtitle text-muted col-6">{{ $advert->updated_at->format('d.m.Y') }}</h6>
+                                        <h6 class="card-subtitle text-muted text-right col-6">{{ $advert->updated_at->format('H:i') }}</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>

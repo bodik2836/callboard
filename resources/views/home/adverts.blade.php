@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="col-9 offset-3">
-                <button type="button" class="btn btn-outline-success btn-lg btn-block">Додати оголошення</button>
+                <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="modal" data-target="#exampleModal">Додати оголошення</button>
                 <div class="row">
                     @foreach($adverts as $advert)
                     <div class="col-xl-4 col-md-6">

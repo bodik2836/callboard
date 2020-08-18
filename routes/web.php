@@ -17,3 +17,4 @@ Route::get('/', 'HomeController@welcome');
 Route::get('advert/{id}', 'HomeController@getAdverts')->where([
     'id' => '[0-9]+'
 ]);
+Route::post('advert/add', 'HomeController@addAdvert');

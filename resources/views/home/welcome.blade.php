@@ -11,8 +11,21 @@
                 </div>
             </div>
             <div class="col-9 offset-3">
-                <button type="button" class="btn btn-outline-success btn-lg btn-block">Додати оголошення</button>
-                < Вибери якусь рубрику.
+                <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="modal" data-target="#exampleModal" >Додати оголошення</button>
+                <div class="text-center mt-3">Недавно додані</div>
+                <div class="row">
+                    @foreach($adverts as $advert)
+                        <div class="col-xl-4 col-md-6">
+                            <div class="card mt-3" style="width: auto;">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $advert->title }}</h5>
+                                    <p class="card-text">{{ $advert->description }}</p>
+                                    <a href="#" class="card-link">Card link</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

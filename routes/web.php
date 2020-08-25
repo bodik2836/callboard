@@ -18,3 +18,13 @@ Route::get('advert/{id}', 'HomeController@getAdverts')->where([
     'id' => '[0-9]+'
 ]);
 Route::post('advert/add', 'HomeController@addAdvert');
+
+Route::match(['get', 'post'], 'admin/category/add', 'AdminController@addCategory');
+Route::match(['get', 'post'], 'admin/category/edit/{id}', 'AdminController@editCategory')->where([
+    'id' => '[0-9]+'
+]);
+Route::get('admin/category/delete/{id}', 'AdminController@deleteCategory')->where([
+    'id' => '[0-9]+'
+]);
+Route::get('admin', 'AdminController@admin');
+Route::get('adverts', 'AdminController@adverts');

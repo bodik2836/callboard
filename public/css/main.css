@@ -1,5 +1,28 @@
 .sidebar {
     position: fixed;
     height: 95%;
+    width: auto;
     overflow-y: auto;
+}
+
+svg {
+    width: 24px;
+    height: 24px;
+}
+
+.edit {
+    width: 24px;
+    height: 24px;
+    color: black;
+}
+
+.edit:hover {
+    color: dodgerblue;
+}
+
+.delete {
+    color: black;
+}
+.delete:hover {
+    color: red;
 }

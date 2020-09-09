@@ -13,7 +13,7 @@ class AdminController extends Controller
         $categories = Category::all();
         $categoryLink = 'active';
 
-        return view('admin.admin', [
+        return view('admin.category_all', [
             'categories' => $categories,
             'categoryLink' => $categoryLink
         ]);
@@ -24,7 +24,7 @@ class AdminController extends Controller
         $adverts= Advert::all();
         $advertLink = 'active';
 
-        return view('admin.adverts', [
+        return view('admin.advert_all', [
             'adverts' => $adverts,
             'advertLink' => $advertLink
         ]);
@@ -63,6 +63,30 @@ class AdminController extends Controller
     {
         Category::find($id)->delete();
 
-        return redirect('admin');
+        return redirect('admin/category/all');
+    }
+
+    public function editAdvert(Request $request, $id)
+    {
+        $advert = Advert::findOrFail($id);
+
+        if ($request->has('title') && $request->has('description')) {
+            $advert->title = $request->input('title');
+            $advert->description = $request->input('description');
+            $advert->save();
+
+            return redirect('admin/advert/all');
+        }
+
+        return view('admin.advert_edit', [
+            'advert' => $advert
+        ]);
+    }
+
+    public function deleteAdvert($id)
+    {
+        Advert::find($id)->delete();
+
+        return redirect('admin/advert/all');
     }
 }

@@ -12,10 +12,12 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $adverts = Advert::orderBy('updated_at', 'desc')->limit(10)->get();
+        $title = 'Головна';
 
         return view('home.welcome', [
             'categories' => $categories,
-            'adverts' => $adverts
+            'adverts' => $adverts,
+            'title' => $title
         ]);
     }
 
@@ -23,11 +25,13 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $category = Category::findOrFail($id);
+        $title = $category->name;
 
         return view('home.adverts', [
             'categories' => $categories,
             'adverts' => $category->adverts()->orderBy('updated_at', 'desc')->get(),
-            'active_id' => $id
+            'active_id' => $id,
+            'title' => $title
         ]);
     }
 

@@ -18,7 +18,7 @@
             <a class="nav-link {{ $categoryLink ?? '' }}" href="/admin">Категорії</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ $advertLink ?? '' }}" href="/adverts">Оголошення</a>
+            <a class="nav-link {{ $advertLink ?? '' }}" href="/admin/advert/all">Оголошення</a>
         </li>
     </ul>
 </div>

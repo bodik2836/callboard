@@ -63,7 +63,7 @@ class AdminController extends Controller
     {
         Category::find($id)->delete();
 
-        return redirect('admin/category/all');
+        return redirect('admin');
     }
 
     public function editAdvert(Request $request, $id)

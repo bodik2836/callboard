@@ -11,8 +11,21 @@
                 </div>
             </div>
             <div class="col-9 offset-3">
-                <button type="button" class="btn btn-outline-success btn-lg btn-block" data-toggle="modal" data-target="#exampleModal" >Додати оголошення</button>
-                <div class="text-center mt-3">Недавно додані</div>
+                <button type="button" class="btn btn-outline-success btn-lg btn-block mb-3" data-toggle="modal" data-target="#exampleModal" >Додати оголошення</button>
+                @if(session()->has('status'))
+                    @if(session('status')['type'] == 'success')
+                        <div class="alert alert-success" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ session('status')['msg'] }}
+                        </div>
+                    @elseif(session('status')['type'] == 'error')
+                        <div class="alert alert-danger" role="alert">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{ session('status')['msg'] }}
+                        </div>
+                    @endif
+                @endif
+                <div class="text-center">Недавно додані</div>
                 <div class="row">
                     @foreach($adverts as $advert)
                         <div class="col-xl-4 col-md-6">

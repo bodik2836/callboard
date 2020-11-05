@@ -2,7 +2,19 @@
 
 @section('content')
     <div class="container">
-
+        @if(session()->has('status'))
+            @if(session('status')['type'] == 'success')
+                <div class="alert alert-success" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ session('status')['msg'] }}
+                </div>
+            @elseif(session('status')['type'] == 'error')
+                <div class="alert alert-danger" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    {{ session('status')['msg'] }}
+                </div>
+            @endif
+        @endif
         <a class="btn btn-primary" href="/admin/category/add">Додати категорію</a>
 
         <table class="table mt-3">

@@ -35,7 +35,18 @@ class AdminController extends Controller
         if ($request->has('name')) {
             $category = new Category();
             $category->name = $request->input('name');
-            $category->save();
+
+            if ($category->save()) {
+                $request->session()->flash('status', [
+                    'msg' => 'Категорія успішно додана.',
+                    'type' => 'success'
+                ]);
+            } else {
+                $request->session()->flash('status', [
+                    'msg' => 'Сталася помилка. Запис не доданий.',
+                    'type' => 'error'
+                ]);
+            }
 
             return redirect('admin');
         }
@@ -49,7 +60,18 @@ class AdminController extends Controller
 
         if ($request->has('name')) {
             $category->name = $request->input('name');
-            $category->save();
+
+            if ($category->save()) {
+                $request->session()->flash('status', [
+                    'msg' => 'Дані успішно оновлені.',
+                    'type' => 'success'
+                ]);
+            } else {
+                $request->session()->flash('status', [
+                    'msg' => 'Сталася помилка. Дані не оновились.',
+                    'type' => 'error'
+                ]);
+            }
 
             return redirect('admin');
         }
@@ -59,9 +81,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function deleteCategory($id)
+    public function deleteCategory(Request $request, $id)
     {
-        Category::find($id)->delete();
+        $category = Category::find($id);
+
+        if ($category->delete()) {
+            $request->session()->flash('status', [
+                'msg' => 'Категорія успішно видалена.',
+                'type' => 'success'
+            ]);
+        } else {
+            $request->session()->flash('status', [
+                'msg' => 'Сталася помилка. Запис не видалено.',
+                'type' => 'error'
+            ]);
+        }
 
         return redirect('admin');
     }
@@ -73,7 +107,18 @@ class AdminController extends Controller
         if ($request->has('title') && $request->has('description')) {
             $advert->title = $request->input('title');
             $advert->description = $request->input('description');
-            $advert->save();
+
+            if ($advert->save()) {
+                $request->session()->flash('status', [
+                    'msg' => 'Дані успішно оновлені.',
+                    'type' => 'success'
+                ]);
+            } else {
+                $request->session()->flash('status', [
+                    'msg' => 'Сталася помилка. Дані не оновились.',
+                    'type' => 'error'
+                ]);
+            }
 
             return redirect('admin/advert/all');
         }
@@ -83,9 +128,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function deleteAdvert($id)
+    public function deleteAdvert(Request $request, $id)
     {
-        Advert::find($id)->delete();
+        $advert = Advert::find($id);
+
+        if ($advert->delete()) {
+            $request->session()->flash('status', [
+                'msg' => 'Запис успішно видалено.',
+                'type' => 'success'
+            ]);
+        } else {
+            $request->session()->flash('status', [
+                'msg' => 'Сталася помилка. Запис не видалено.',
+                'type' => 'error'
+            ]);
+        }
 
         return redirect('admin/advert/all');
     }

@@ -46,7 +46,18 @@ class HomeController extends Controller
             $advert->title = $request->input('title');
             $advert->description = $request->input('description');
             $advert->category_id = $request->input('category_id');
-            $advert->save();
+
+            if ($advert->save()) {
+                $request->session()->flash('status', [
+                    'msg' => 'Оголошення успішно додане.',
+                    'type' => 'success'
+                ]);
+            } else {
+                $request->session()->flash('status', [
+                    'msg' => 'Сталася помилка. Оголошення не додане.',
+                    'type' => 'error'
+                ]);
+            }
         }
 
         return redirect('/');
